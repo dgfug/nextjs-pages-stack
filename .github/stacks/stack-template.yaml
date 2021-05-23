@@ -20,13 +20,13 @@ composes:                                         # stack-composition via stack 
 
   - stack: thetestbed/stack-template-flask        # stack added 
     version: 1                                    # stack parameters via values.yaml
+
+  - stack: thetestbed/stack-template-gcp-redis    # stack added 
+    version: 3.1                                  # stack parameters via values.yaml
     
-  - stack: thetestbed/stack-template-mysqldb-gcp  # stack added 
+  - stack: thetestbed/stack-template-gcp-mysqldb  # stack added 
     version: 3.1                                  # stack parameters via values.yaml
         
-  - stack: thetestbed/stack-template-redis-gcp    # stack added 
-    version: 3.1                                  # stack parameters via values.yaml
-    
   - stack: thetestbed/stack-template-algolia      # stack added 
     version: 3.1                                  # stack parameters via values.yaml
 
@@ -38,6 +38,17 @@ composes:                                         # stack-composition via stack 
                                                   # ⚠️  exports from 2nd stack, STACK_GITHUB_REPO_URL for flask app
                                                   # ⚠️  exports from 2nd stack, STACK_FLASK_URL
                                                   # ⚠️
-                                                  # ⚠️  exports from 3rd stack, STACK_MYSQLDB_URL
-                                                  # ⚠️  exports from 4th stack, STACK_REDIS_URL
+                                                  # ⚠️  exports from 3rd stack, STACK_REDIS_URL
+                                                  # ⚠️  exports from 4th stack, STACK_MYSQLDB_URL
                                                   # ⚠️  exports from 5th stack, STACK_ALGOLIA_URL
+
+                                                  # stack-template.yaml once executed, produces artifacts to generates stack
+                                                  # ⚠️  artifact from 1st stack, a github repository
+                                                  # ⚠️  artifact from 1st stack, a gcp cloudrun app server - serving reactjs app
+
+                                                  # ⚠️  artifact from 2nd stack, a github repository
+                                                  # ⚠️  artifact from 2nd stack, a gcp cloudrun app server - serving flask app
+
+                                                  # ⚠️  artifact from 3rd stack, a gcp redis instance
+                                                  # ⚠️  artifact from 4th stack, a gcp mysqldb instance
+                                                  # ⚠️  artifact from 5th stack, a algolia instance
