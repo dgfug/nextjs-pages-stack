@@ -1,0 +1,43 @@
+version: 1.0                                      # stack-schema version 1.0
+
+name: reactjs-flask-mysqldb-redis-algolia         # stack-template name by stack-template author
+description: reactjs flask mysqldb redis algolia  # stack-template description by stack-template author
+
+tags:                                             # stack-template tags
+- stack-template-flask-mysql
+- stack-by-phoenix24
+- composed stack
+- python 3.9
+- flask 2.0.2
+- mysql 5.1
+- aloglia
+- redis
+- apache 2 licensed
+
+composes:                                         # stack-composition via stack layering
+  - stack: thetestbed/stack-template-reactjs
+    version: 1
+
+  - stack: thetestbed/stack-template-flask        # stack added 
+    version: 1                                    # stack parameters via values.yaml
+    
+  - stack: thetestbed/stack-template-mysqldb-gcp  # stack added 
+    version: 3.1                                  # stack parameters via values.yaml
+        
+  - stack: thetestbed/stack-template-redis-gcp    # stack added 
+    version: 3.1                                  # stack parameters via values.yaml
+    
+  - stack: thetestbed/stack-template-algolia      # stack added 
+    version: 3.1                                  # stack parameters via values.yaml
+
+                                                  # stack-template.yaml once executed, exports following to generated stack
+                                                  # ⚠️
+                                                  # ⚠️  exports from 1st stack, STACK_GITHUB_REPO_URL for reactjs app
+                                                  # ⚠️  exports from 1st stack, STACK_REACTJS_URL
+                                                  # ⚠️
+                                                  # ⚠️  exports from 2nd stack, STACK_GITHUB_REPO_URL for flask app
+                                                  # ⚠️  exports from 2nd stack, STACK_FLASK_URL
+                                                  # ⚠️
+                                                  # ⚠️  exports from 3rd stack, STACK_MYSQLDB_URL
+                                                  # ⚠️  exports from 4th stack, STACK_REDIS_URL
+                                                  # ⚠️  exports from 5th stack, STACK_ALGOLIA_URL
