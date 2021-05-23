@@ -15,10 +15,10 @@ tags:                                             # stack-template tags
 - apache 2 licensed
 
 composes:                                         # stack-composition via stack layering
-  - stack: thetestbed/stack-template-reactjs
-    version: 1
+  - stack: thetestbed/stack-template-reactjs-app  # stack added 
+    version: 1                                    # stack parameters via values.yaml
 
-  - stack: thetestbed/stack-template-flask        # stack added 
+  - stack: thetestbed/stack-template-flask-app    # stack added 
     version: 1                                    # stack parameters via values.yaml
 
   - stack: thetestbed/stack-template-gcp-redis    # stack added 
