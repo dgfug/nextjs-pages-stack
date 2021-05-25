@@ -1,14 +1,11 @@
 version: 1.0                                      # stack-schema version 1.0
 
-name: reactjs-flask-mysqldb-redis-algolia         # stack-template name by stack-template author
-description: reactjs flask mysqldb redis algolia  # stack-template description by stack-template author
+name: reactjs-mysqldb-redis-algolia.              # stack-template name by stack-template author
+description: reactjs mysqldb redis algolia        # stack-template description by stack-template author
 
 tags:                                             # stack-template tags
-- stack-template-flask-mysql
+- stack-template-reactjs-mysql-redis-algolia
 - stack-by-phoenix24
-- composed stack
-- python 3.9
-- flask 2.0.2
 - mysql 5.1
 - aloglia
 - redis
@@ -71,66 +68,6 @@ configs:
 
 initialize:
 
-  - workflow:
-    path: "repo-init.yaml"                        # stack-template workflow path is __relative__ to .github/stacks
-    inputs:
-      key1: ${stack.input.wflow-key3}             # stack input parameter key name must be unique, 
-      key2: ${stack.input.wflow-key4}             #      because ${stack.input} is a common namespace
-    runner-image: ubuntu-latest                   
-                                                  # stack-template inputs (or values) 
-                                                  # ⚠️  - not overrided
-
-                                                  # stack-template exports to stack-instance
-                                                  # ⚠️  - STACK_GITHUB_REPO_URL
-                                                  # ⚠️  - STACK_GITHUB_REPO_WIKI
-                                                  # ⚠️  - STACK_GITHUB_REPO_ISSUES
-                                                  #
-                                                  # ⚠️  - STACK_GITHUB_APPS_CODETREE
-                                                  # ⚠️  - STACK_GITHUB_APPS_AZURE
-                                                  #
-                                                  # ⚠️  - STACK_GITHUB_ENVRONMENT_REVIEW
-                                                  # ⚠️  - STACK_GITHUB_ENVRONMENT_PRODUCTION
-
-                                                  # stack-template artifacts to stack-instance
-                                                  # ⚠️  - a github repository
-                                                  # ⚠️  - a github repository-wiki
-                                                  # ⚠️  - a github repository-issues
-                                                  # 
-                                                  # ⚠️  - a github repository-app-codetree
-                                                  # ⚠️  - a github repository-app-azure
-                                                  # 
-                                                  # ⚠️  - a github repository-env-review
-                                                  # ⚠️  - a github repository-env-production
-
-  - workflow:
-    path: "initialize-gcp-cloudrun.yaml"          # stack-template workflow path is __relative__ to .github/stacks
-    inputs:
-      key1: ${stack.input.wflow-key3}             # stack-template input parameter key name must be unique,
-      key2: ${stack.input.wflow-key4}             #      because ${stack.input} is a common namespace
-    runner-image: ubuntu-latest
-
-                                                  # once executed, may exports values to generated stack-instance
-                                                  # ⚠️  exported values are key-value pairs
-                                                  # ⚠️  exported values are generated artifacts (post execution)
-
-                                                  # ⚠️  exports from stack-template
-                                                  # ⚠️    export CLOUDRUN_APP_URL
-                                                  # ⚠️    export CLOUDRUN_DOCKER_IMAGE
-                                                  
-                                                  # ⚠️  artifacts from stack-template added to stack-instance 
-                                                  # ⚠️    worfkow/build.yaml
-                                                  # ⚠️    worfkow/deploy.yaml
-                                                  # ⚠️    cloudrun app service
-
-
-
-
-  - workflow:
-    path: "repo-init.yaml"                        # stack-template workflow path is __relative__ to .github/stacks
-    inputs:
-      key1: ${stack.input.wflow-key3}             # stack input parameter key name must be unique, 
-      key2: ${stack.input.wflow-key4}             #      because ${stack.input} is a common namespace
-    runner-image: ubuntu-latest                   
                                                   # stack-template inputs (or values) 
                                                   # ⚠️  - not overrided
 
@@ -206,8 +143,8 @@ initialize:
 
 
 
-  - workflow:                                     # initialize provision-gcp-redis
-    path: "provision-gcp-redis.yaml"              # 
+  - workflow:                                     # initialize provision-algolia
+    path: "provision-gcp-algolia.yaml"            # 
     inputs:                                       # 
       key1: ${stack.input.wflow-key1}             # stack-template inputs (or values) 
       key2: ${stack.input.wflow-key2}             # ⚠️  - not overrided
