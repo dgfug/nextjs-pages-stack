@@ -14,6 +14,61 @@ tags:                                             # stack-template tags
 - redis
 - apache 2 licensed
 
+configs:
+
+  repository:                                     # stack-template artifact generated to stack-instance 
+    name: ${stack.input.repo-name}                
+    branch-protection:
+      parameters:
+        branch: main
+        enforce_admins: true
+        dismiss_stale_reviews: true
+        require_code_owner_reviews: true
+        required_approving_review_count: 2
+        allow_deletions: false
+        allow_force_pushes: false 
+    description: "new repository created from ${stack.template.name}"
+    tags:                                         # stack-template tags to be added to generated stack-instance repository
+    - stack-starter
+    - [${stack.input.tags}]
+
+  wikis:                                          # stack-template settings to be added to generated stack-instance repository
+    enabled: true
+
+  issues:                                         # stack-template settings to be added to generated stack-instance repository
+    enabled: true
+
+  environments:                                   # stack-template environments to be added to generated stack-instance
+    - name: review                                # stack-template environment added to generated stack-instance
+      parameters:
+        name: review
+        wait_timer: 30
+        protected_branches: false
+        custom_branch_policies: true
+        secret_var1: val1
+        secret_var2: val2
+      description: "review env for ${stack.input.repo-name}"
+
+    - name: production                            # stack-template environment added to generated stack-instance
+      parameters:
+        name: production
+        wait_timer: 60
+        secret_var1: val1
+      description: "production env for ${stack.input.repo-name}"
+
+  github-apps:                                    # stack-template apps added to generated stack-instance repository
+    - name: Azure
+    - name: codetree
+
+  vulnerability-alerts:                           # stack-template settings applied to generated stack-instance repository
+    enabled: true
+
+  automated-security-fixes:                       # stack-template settings applied to generated stack-instance repository
+    enabled: true
+
+
+
+
 initialize:
 
   - workflow:
