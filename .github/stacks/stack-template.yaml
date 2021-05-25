@@ -1,11 +1,12 @@
 version: 1.0                                      # stack-schema version 1.0
 
-name: reactjs-mysqldb-redis-algolia.              # stack-template name by stack-template author
-description: reactjs mysqldb redis algolia        # stack-template description by stack-template author
+name: stack-reactjs-mysqldb-redis-algolia         # stack-template name by stack-template author
+description: stack reactjs mysqldb redis algolia  # stack-template description by stack-template author
 
 tags:                                             # stack-template tags
-- stack-template-reactjs-mysql-redis-algolia
+- stack-reactjs-mysqldb-redis-algolia
 - stack-by-phoenix24
+- reactjs 15.x
 - mysql 5.1
 - aloglia
 - redis
