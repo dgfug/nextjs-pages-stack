@@ -29,8 +29,11 @@ this is a github stack for meant for users building nextjs app and deploying on 
 
 #### github environment secrets
 ```
-# created by github stacks to be used by dependabot)
+# created by github stacks to be used by dependabot
 - NPM_PASSWORD
+
+# created by github stacks to be used by sendgrid action
+- SENDGRID_API_KEY
 ```
 
 #### github apps installed
