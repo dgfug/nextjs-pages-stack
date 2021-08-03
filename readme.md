@@ -20,7 +20,7 @@ this is a github stack for meant for users building nextjs app and deploying on 
 #### github repository configs
 - branch naming convention - `dev*`
 - branch protection settings for `dev*` branch
-- branch protection settings for `main` branch
+- branch protection settings for `master` branch
 - enable security alerts
 - enable vulnerability alerts
 - enable reviewer count of 2 per pull-request
