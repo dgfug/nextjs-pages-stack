@@ -1,0 +1,56 @@
+version: 1.0
+
+name: ghstack-nextjs
+description: ghstack for a nextjs app
+
+inputs:
+  - name: DEV_SPN_ID
+    description: SPN ID for dev deployments
+
+  - name: reviewer-count
+    default: 2
+    description: Number of required reviewers for PR
+
+  - name: enable-security-alerts
+    default: true
+    description: Enable Security Alerts
+
+  - name: enable-vulnerability-alerts
+    default: true
+    description: Enable Vulnerability Alerts
+
+configs:
+  - topics:
+    - nextjs
+    - azure-cloud
+
+  - branches:
+    - name: main
+      parameters:
+        enforce-admins: true
+        dismiss-stale-reviews: true
+        require-code-owner-reviews: true
+        required-approving-review-count: {{ inputs.reviewer-count }}
+        allow-force-pushes: false
+        allow-deletions: false
+    
+  - environments: 
+    - name: dev
+      parameters: 
+      protected-branches: false
+      custom-branch-policies: true
+      secrets:
+        - name: AZURE_SPN_ID
+          value: {{inputs.DEV_SPN_ID}}
+          
+  - security:
+    parameters: 
+      vulnerability-alerts: {{inputs.enable-vulnerability-alerts}}
+      automated-security-fixes: true
+
+github-apps:
+- name: Azure
+- name: codetree
+
+init:
+  uses: ".github/workflows/setup.yaml"
