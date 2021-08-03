@@ -15,3 +15,9 @@ jobs:
           registry-url: https://registry.npmjs.org/
       - run: npm install
       - run: npm run build
+
+    - name: notify via sendgrid
+      uses: peter-evans/sendgrid-action@v1
+      env:
+        SENDGRID_API_KEY: ${{ secrets.SENDGRID_API_KEY }}
+        SCRIPT_FILEPATH: ./.github/sendgrid.js
