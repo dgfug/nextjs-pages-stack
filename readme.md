@@ -25,9 +25,12 @@ this is a github stack for meant for users building nextjs app and deploying on 
 - enable vulnerability alerts
 - enable reviewer count of 2 per pull-request
 - enable codeql security analysis (via workflow)
+- enable dependabot (via workflow)
 
 #### github repository secrets
-```NA```
+```
+- NPM_PASSWORD
+```
 
 #### github apps installed
 ```NA```

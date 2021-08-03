@@ -4,8 +4,8 @@ name: ghstack-nextjs
 description: ghstack for a nextjs app
 
 inputs:
-  - name: DEV_SPN_ID
-    description: SPN ID for dev deployments
+  - name: NPM_PASSWORD
+    description: NPM_PASSWORD for dependabot workflow
 
   - name: reviewer-count
     default: 2
@@ -40,8 +40,8 @@ configs:
       protected-branches: false
       custom-branch-policies: true
       secrets:
-        - name: AZURE_SPN_ID
-          value: {{inputs.DEV_SPN_ID}}
+        - name: NPM_PASSWORD
+          value: {{inputs.NPM_PASSWORD}}
           
   - security:
     parameters: 
