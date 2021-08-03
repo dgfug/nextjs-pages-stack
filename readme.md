@@ -35,9 +35,9 @@ this is a github stack for meant for users building nextjs app and deploying on 
 #### version summary
 ```nextjs version (17.0.2)```
 
-## How - quick howto on getting started.
+## HowTos - getting started.
 
-#### setup local development server
+#### local development server
 runs the app in the development mode.
 ```
 # to start a local development environment, and view in browser.
@@ -51,6 +51,12 @@ npm test
 # to generate a production build
 npm run build
 ```
+
+#### deployment to github pages
+```
+au
+```
+
 
 #### learn more 
 Learn more about [next.js](https://nextjs.org/learn) from the official tutorial.
