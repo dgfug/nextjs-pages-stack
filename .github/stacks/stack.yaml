@@ -33,11 +33,20 @@ configs:
         required-approving-review-count: {{ inputs.reviewer-count }}
         allow-force-pushes: false
         allow-deletions: false
-    
+
+    - name: dev*
+      parameters:
+        enforce-admins: false
+        dismiss-stale-reviews: true
+        require-code-owner-reviews: false
+        required-approving-review-count: 0
+        allow-force-pushes: true
+        allow-deletions: true
+
   - environments: 
-    - name: dev
+    - name: production
       parameters: 
-      protected-branches: false
+      protected-branches: true
       custom-branch-policies: true
       secrets:
         - name: NPM_PASSWORD

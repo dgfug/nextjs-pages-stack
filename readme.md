@@ -18,17 +18,18 @@ this is a github stack for meant for users building nextjs app and deploying on 
 - <img src="https://github.githubassets.com/images/modules/site/icons/footer/github-mark.svg" height="20"> [next.js](https://pages.github.com/)
 
 #### github repository configs
-- branch naming convention - `develop*`
-- branch protection settings
-- branch restriction on master (pull-request only). 
+- branch naming convention - `dev*`
+- branch protection settings for `dev*` branch
+- branch protection settings for `main` branch
 - enable security alerts
 - enable vulnerability alerts
 - enable reviewer count of 2 per pull-request
 - enable codeql security analysis (via workflow)
 - enable dependabot (via workflow)
 
-#### github repository secrets
+#### github environment secrets
 ```
+# created by github stacks to be used by dependabot)
 - NPM_PASSWORD
 ```
 
