@@ -1,3 +1,5 @@
+[use this stack](https://github.com/new?stack=github/ghstack-nextjs-ghpages)
+
 [![GitHub stars](https://img.shields.io/github/stars/github/fetch.svg?style=social&label=Star)](https://github.com/github/fetch) 
 <a href="https://discord.gg/phoenix24"><img src="https://img.shields.io/badge/chat-discord-brightgreen.svg?logo=discord&style=flat"></a>
 <a href="https://twitter.com/intent/follow?screen_name=phoenix24"><img src="https://img.shields.io/badge/Follow-phoenix24-blue.svg?style=flat&logo=twitter"></a>
