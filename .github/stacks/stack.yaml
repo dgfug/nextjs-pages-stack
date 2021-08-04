@@ -1,4 +1,7 @@
 version: 1.0
+branding:
+ icon: 'Azure.svg'
+ color: 'blue'
 
 name: ghstack-nextjs
 description: ghstack for a nextjs app
@@ -28,44 +31,43 @@ configs:
     - nextjs
     - github-pages
 
-  - branches:
-    - name: master
-      parameters:
-        enforce-admins: true
-        dismiss-stale-reviews: true
-        require-code-owner-reviews: true
-        required-approving-review-count: {{ inputs.reviewer-count }}
-        allow-force-pushes: false
-        allow-deletions: false
+  branches:
+  - name: master
+    parameters:
+      enforce-admins: true
+      dismiss-stale-reviews: true
+      require-code-owner-reviews: true
+      required-approving-review-count: {{ inputs.reviewer-count }}
+      allow-force-pushes: false
+      allow-deletions: false
 
-    - name: dev*
-      parameters:
-        enforce-admins: false
-        dismiss-stale-reviews: true
-        require-code-owner-reviews: false
-        required-approving-review-count: 0
-        allow-force-pushes: true
-        allow-deletions: true
+  - name: dev*
+    parameters:
+      enforce-admins: false
+      dismiss-stale-reviews: true
+      require-code-owner-reviews: false
+      required-approving-review-count: 0
+      allow-force-pushes: true
+      allow-deletions: true
 
-  - environments: 
-    - name: production
-      parameters: 
-      protected-branches: true
-      custom-branch-policies: true
-      secrets:
-        - name: NPM_PASSWORD
-          value: {{inputs.NPM_PASSWORD}}
+  environments: 
+  - name: production
+    parameters: 
+    protected-branches: true
+    custom-branch-policies: true
+    secrets:
+      - name: NPM_PASSWORD
+        value: {{inputs.NPM_PASSWORD}}
+        
+    - name: SENDGRID_API_KEY
+      value: {{inputs.SENDGRID_API_KEY}}
           
-      - name: SENDGRID_API_KEY
-        value: {{inputs.SENDGRID_API_KEY}}
-          
-  - security:
+  security:
     parameters: 
       vulnerability-alerts: {{inputs.enable-vulnerability-alerts}}
       automated-security-fixes: true
 
 github-apps:
-- name: Azure
 - name: codetree
 
 init:
