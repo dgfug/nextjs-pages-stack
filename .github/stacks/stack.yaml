@@ -1,10 +1,10 @@
 version: 1.0
-branding:
- icon: 'Azure.svg'
- color: 'blue'
 
 name: ghstack-nextjs
 description: ghstack for a nextjs app
+branding:
+ icon: 'Azure.svg'
+ color: 'blue'
 
 inputs:
   - name: NPM_PASSWORD
