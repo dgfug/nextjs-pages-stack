@@ -23,9 +23,10 @@ inputs:
     description: Enable Vulnerability Alerts
 
 configs:
-  - topics:
+  repo-metadata:
+    topics:
     - nextjs
-    - azure-cloud
+    - github-pages
 
   - branches:
     - name: master
