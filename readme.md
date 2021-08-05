@@ -1,4 +1,4 @@
-<a href="https://github.com/github/new?stack=ghstack-nextjs-ghpages"><img src="./public/use-this-stack.svg"/></a>
+<a href="https://github.com/github/new?stack=ghstack-nextjs-ghpages"><img src="./.github/stacks/use-this-stack.svg"/></a>
 
 <img src="https://upload.wikimedia.org/wikipedia/commons/8/8e/Nextjs-logo.svg" alt="Hugo" width="100" height ="50"/>   <img src="https://upload.wikimedia.org/wikipedia/commons/3/30/OCR-A_char_Plus_Sign.svg" alt="Hugo" width="50" height ="50"/>   <img src="./githubpages.png" alt="Azure" />
 
