@@ -59,8 +59,8 @@ configs:
       - name: NPM_PASSWORD
         value: {{inputs.NPM_PASSWORD}}
         
-    - name: SENDGRID_API_KEY
-      value: {{inputs.SENDGRID_API_KEY}}
+      - name: SENDGRID_API_KEY
+        value: {{inputs.SENDGRID_API_KEY}}
           
   security:
     parameters: 
@@ -71,4 +71,4 @@ github-apps:
 - name: codetree
 
 init:
-  uses: ".github/workflows/setup.yaml"
+ - uses: ".github/workflows/setup.yaml"
