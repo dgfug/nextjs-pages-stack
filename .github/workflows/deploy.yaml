@@ -2,45 +2,34 @@ name: Deploy to Github Pages
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
 
-  workflow_dispatch:
+env:
+  NODE_VERSION: '___NODE_VERSION___'
 
 jobs:
-  deployment:
+  deploy:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [14.x]
+    name: "deploy nextjs app to ghpages"
 
     steps:
       - uses: actions/checkout@v2
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: use node.js ${{ env.NODE_VERSION }}
         uses: actions/setup-node@v1
         with:
-          node-version: ${{ matrix.node-version }}
-          
-      - name: Use NPM 7
-        run: npm i -g npm@latest
+          node-version: ${{ env.NODE_VERSION }}
+          registry-url: https://registry.npmjs.org/
 
-      - name: Cache dependencies
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: ${{ runner.OS }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.OS }}-node-
-            ${{ runner.OS }}-
-      - name: Build
+      - name: build
         run: |
-          npm ci --legacy-peer-deps
-          npm run build
-          npm run export
-      - name: Deploy
-        uses: peaceiris/actions-gh-pages@v3
+          npm install -g
+          npm run build && next export -o build
+
+      - name: deploy
+        uses: JamesIves/github-pages-deploy-action@releases/v3
         with:
-          deploy_key: ${{ secrets.ACTIONS_DEPLOY_KEY }}
-          publish_dir: ./out
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          BRANCH: gh-pages
+          FOLDER: build
+          CLEAN: true

@@ -1,0 +1,28 @@
+name: "provision stack build/ deploy for ghpages"
+
+on:
+  workflow_dispatch:
+    inputs:
+      NODE_VERSION:
+        required: true
+        description: 'nodejs version to be used'
+
+jobs:
+  stack-initialization:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - name: use node.js ${{ github.event.inputs.NODE_VERSION }} 
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ github.event.inputs.NODE_VERSION }}
+          registry-url: https://registry.npmjs.org/
+
+      - name: substitute user inputs in the workflow files
+        uses: microsoft/variable-substitution@v1 
+        with:
+          files: '.github/workflows/deploy.yaml, .github/workflows/build.yaml'
+        env:
+          ___NODE_VERSION___: '${{ github.event.inputs.NODE_VERSION }}'
