@@ -22,25 +22,20 @@ The stack also sets up a proper Github CI/CD environment by taing care of the fo
 
 ## What are the inputs to pass while setting up the stack?
 ```
-# This is needed for dependabot workflow
-- NPM_PASSWORD
-
-# created by github stacks to be used by sendgrid action
-- SENDGRID_API_KEY
-
-# You dont have to pass this. Azure OIDC app will set the secret 
-- PROD_SPN_ID
+NA
 ```
 
 #### Github apps installed with this stack
-```Azure```
+```
+NA
+```
 
 #### Version summary
 ```nextjs version (17.0.2)```
 
 #### deployment to github pages
 ```
-au
+GitHub Pages
 ```
 
 ## How to setup local development server?
@@ -75,7 +70,5 @@ Please see our guide lines for [contributing.md](/.github/stacks/contributing.md
 
 ## Contributors 
 - chaitanya sharma ([@phoenix24](https://twitter.com/phoenix24)) 
-- atul malaviya ([@azooinmyluggage](https://twitter.com/azooinmyluggage))
-- usha narayanabhatta ([@n-usha](https://twitter.com/n-usha))
 - trilok ramakrishna ([@3loka](https://twitter.com/3loka))
 
