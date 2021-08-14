@@ -3,10 +3,27 @@ version: 1.0
 name: ghstack-nextjs
 description: ghstack for a nextjs app
 branding:
- icon: 'Azure.svg'
+ icon: 'githubpages.svg'
  color: 'blue'
 
 inputs:
+  - name: NODE_VERSION
+    default: v12.22.4
+    description: NODE_VERSION for nodejs stack
+    validvalues:
+    - v12.22.4
+    - v14.17.4
+
+  - name: NEXTJS_VERSION
+    default: v11.0.1
+    description: NEXTJS_VERSION for nextjs stack
+    validvalues:
+    - v11.0.1
+    - v10.2.4
+    - v10.2.3
+    - v10.2.2
+    - v10.2.1
+
   - name: reviewer-count
     default: 2
     description: Number of required reviewers for PR
@@ -26,7 +43,7 @@ configs:
     - github-pages
 
   branches:
-  - name: master
+  - name: main
     parameters:
       enforce-admins: true
       dismiss-stale-reviews: true
@@ -59,4 +76,4 @@ github-apps:
 - name: codetree
 
 init:
- - uses: ".github/workflows/setup.yaml"
+- uses: ".github/workflows/stack-init.yaml"
