@@ -24,10 +24,6 @@ inputs:
     - v10.2.2
     - v10.2.1
 
-  - name: reviewer-count
-    default: 2
-    description: Number of required reviewers for PR
-
   - name: enable-security-alerts
     default: true
     description: Enable Security Alerts
@@ -48,18 +44,9 @@ configs:
       enforce-admins: true
       dismiss-stale-reviews: true
       require-code-owner-reviews: true
-      required-approving-review-count: {{ inputs.reviewer-count }}
+      required-approving-review-count: 0
       allow-force-pushes: false
       allow-deletions: false
-
-  - name: dev*
-    parameters:
-      enforce-admins: false
-      dismiss-stale-reviews: true
-      require-code-owner-reviews: false
-      required-approving-review-count: 0
-      allow-force-pushes: true
-      allow-deletions: true
 
   environments: 
   - name: production
