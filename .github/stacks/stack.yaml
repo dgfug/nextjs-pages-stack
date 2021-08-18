@@ -24,14 +24,6 @@ inputs:
     - v10.2.2
     - v10.2.1
 
-  - name: enable-security-alerts
-    default: true
-    description: Enable Security Alerts
-
-  - name: enable-vulnerability-alerts
-    default: true
-    description: Enable Vulnerability Alerts
-
 configs:
   repo-metadata:
     topics:
@@ -43,7 +35,7 @@ configs:
     parameters:
       enforce-admins: true
       dismiss-stale-reviews: true
-      require-code-owner-reviews: true
+      require-code-owner-reviews: false
       required-approving-review-count: 0
       allow-force-pushes: false
       allow-deletions: false
@@ -53,11 +45,6 @@ configs:
     parameters: 
     protected-branches: true
     custom-branch-policies: true
-          
-  security:
-    parameters: 
-      vulnerability-alerts: {{inputs.enable-vulnerability-alerts}}
-      automated-security-fixes: {{inputs.enable-security-alerts}}
 
 init:
 - uses: ".github/workflows/stack-init.yaml"
