@@ -57,7 +57,7 @@ configs:
   security:
     parameters: 
       vulnerability-alerts: {{inputs.enable-vulnerability-alerts}}
-      automated-security-fixes: true
+      automated-security-fixes: {{inputs.enable-security-alerts}}
 
 github-apps:
 - name: codetree
