@@ -37,10 +37,12 @@ jobs:
         with:
           script: |
             //todo: fixme the commit function/ script.
-            //todo: fixme the commit function/ script.
 
-            await github.repo.createCommit({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              body: 'Initial Commit!'
+            octokit.rest.git.createCommit({
+              owner,
+              repo,
+              message,
+              tree,
+              author.name,
+              author.email
             })
