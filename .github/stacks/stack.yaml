@@ -59,8 +59,5 @@ configs:
       vulnerability-alerts: {{inputs.enable-vulnerability-alerts}}
       automated-security-fixes: {{inputs.enable-security-alerts}}
 
-github-apps:
-- name: codetree
-
 init:
 - uses: ".github/workflows/stack-init.yaml"
