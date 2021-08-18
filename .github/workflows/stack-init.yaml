@@ -20,9 +20,27 @@ jobs:
           node-version: ${{ github.event.inputs.NODE_VERSION }}
           registry-url: https://registry.npmjs.org/
 
+      - name: stacks framework code generation
+        run: npx create-next-app nextjs-scaffold --use-npm --example "https://github.com/vercel/next-learn-starter/tree/master/learn-starter
+        run: cp -r nextjs-scaffold/* .
+        run: rm -rf nextjs-scaffold
+
       - name: substitute user inputs in the workflow files
         uses: microsoft/variable-substitution@v1 
         with:
           files: '.github/workflows/deploy.yaml, .github/workflows/build.yaml'
         env:
           ___NODE_VERSION___: '${{ github.event.inputs.NODE_VERSION }}'
+
+      - name: stacks framework commit to repository
+        uses: actions/github-script@v4
+        with:
+          script: |
+            //todo: fixme the commit function/ script.
+            //todo: fixme the commit function/ script.
+
+            await github.issues.createCommit({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: 'Initial Commit!'
+            })

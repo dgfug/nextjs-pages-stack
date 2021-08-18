@@ -1,5 +1,5 @@
 {
-    "name": "github codespaces for ghstack-nextjs-vanilla",
+    "name": "github codespaces for ghstack for nextjs with ghpages",
     "extensions": [
         "coenraads.bracket-pair-colorizer-2",
         "cschleiden.vscode-github-actions",
