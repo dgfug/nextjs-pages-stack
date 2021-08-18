@@ -39,7 +39,7 @@ jobs:
             //todo: fixme the commit function/ script.
             //todo: fixme the commit function/ script.
 
-            await github.issues.createCommit({
+            await github.repo.createCommit({
               owner: context.repo.owner,
               repo: context.repo.repo,
               body: 'Initial Commit!'
