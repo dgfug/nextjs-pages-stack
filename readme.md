@@ -87,4 +87,4 @@ Please see our guide lines for [contributing.md](/.github/stacks/contributing.md
 - trilok ramakrishna ([@3loka](https://twitter.com/3loka))
 
 ## License
-Unless otherwise noted, the Vitess source files are distributed under the Apache Version 2.0 license found in the LICENSE file.
+Unless otherwise noted, this GitHub Stack is distributed under the Apache Version 2.0 license found in the LICENSE file.
