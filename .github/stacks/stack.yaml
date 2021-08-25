@@ -1,16 +1,20 @@
-version: 1.0
+version: 1.0                                           # stack schema version 1.0 (latest)
 
-name: ghstack-nextjs
-description: ghstack for a nextjs app
-branding:
- icon: 'githubpages.svg'
- color: 'blue'
 
-inputs:
-  - name: NODE_VERSION
-    default: v12.22.4
-    description: NODE_VERSION for nodejs stack
-    validvalues:
+name: ghstack-nextjs                                   # stack name 
+description: ghstack for a nextjs app on ghpages       # stack description
+
+
+branding:                                              # stack branding 
+ icon: 'github-pages.svg'
+ color: 'black'
+
+
+inputs:                                                # stack inputs 
+  - name: NODE_VERSION                                 # stack input name
+    default: v12.22.4                                  # stack input default value provided
+    description: NODE_VERSION for nodejs stack         # stack input description
+    validvalues:                                       # stack input valid values that can be selected
     - v12.22.4
     - v14.17.4
 
@@ -24,27 +28,32 @@ inputs:
     - v10.2.2
     - v10.2.1
 
-configs:
+  - name: LICENSE
+    default: None
+    description: choose a licence to be applied to new stack, learn more [here](https://docs.github.com/articles/licensing-a-repository/#disclaimer).
+    validvalues:
+    - None
+    - BSD License
+    - MIT License
+    - Apache License 2.0
+    - Mozilla Public License 2.0
+    - Creative Commons Zero v1.0 Universal
+
+
+configs:                                               # stack config applied to new repository
   repo-metadata:
-    topics:
+    topics:                                            # repository tags for new repository
     - nextjs
     - github-pages
 
-  branches:
+  branches:                                            # branching configs for new repository
   - name: main
     parameters:
-      enforce-admins: true
-      dismiss-stale-reviews: true
-      require-code-owner-reviews: false
-      required-approving-review-count: 0
-      allow-force-pushes: false
-      allow-deletions: false
+      enforce-admins: true                             # default: false
+      dismiss-stale-reviews: true                      # default: false
 
-  environments: 
+  environments:                                        # environment configs for new repository
   - name: production
-    parameters: 
-    protected-branches: true
-    custom-branch-policies: true
 
 init:
-- uses: ".github/workflows/stack-init.yaml"
+  uses: ".github/workflows/stack-init.yaml"
