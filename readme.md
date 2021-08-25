@@ -12,24 +12,14 @@
 ## Why should you use this stack?
 You can spin a website in seconds using NextJS.
 
-Next.js gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching, and more. No config needed. Read more about [next.js](https://nextjs.org/learn)
+Next.js gives you the best developer experience with all the features you need for production: hybrid static & server rendering, TypeScript support, smart bundling, route pre-fetching and more. No config needed. Read more about [next.js](https://nextjs.org/learn)
 
 The website is hosted in [Github Pages](https://pages.github.com/). 
 
 The stack also sets up a proper Github CI/CD environment by taing care of the following things
-1. Branch Naming convention 
-    - You can use any branch prefixed with "dev" as your development environment. 
+- creating a "main" branch, and applying below additional settings.
+- configuring github repository to dismiss-stale-reviews
 
-2. Branch Protection Setting 
-    - Developers working on this branch can work freely and push changes without a PR and a code reviewer. 
-    - This facilitates quick development. However the `master` Branch is protected and it needs a Pull request to merge with 2 reviewers approving it. 
-    - The Reviewers should be defined in CODEOWNERS file.
-
-3. Enable Security alerts 
-    - A workflow will be setup for you to enable Dependabot alerts to detect vulnerabilities.
-
-4. CodeQL Security Analysis 
-    - Discover vulnerabilities across a codebase with CodeQL, our industry-leading semantic code analysis engine
 
 ## What are the inputs to pass while setting up the stack?
 ```

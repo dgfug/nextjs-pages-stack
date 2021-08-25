@@ -49,7 +49,6 @@ configs:                                               # stack config applied to
   branches:                                            # branching configs for new repository
   - name: main
     parameters:
-      enforce-admins: true                             # default: false
       dismiss-stale-reviews: true                      # default: false
 
   environments:                                        # environment configs for new repository
