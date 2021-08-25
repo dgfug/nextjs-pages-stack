@@ -23,6 +23,7 @@ The stack also sets up a proper Github CI/CD environment by taing care of the fo
 
 ## What are the inputs to pass while setting up the stack?
 ```
+- LICENSE
 - NODE_VERSION
 - NEXTJS_VERSION
 ```
