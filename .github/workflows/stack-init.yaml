@@ -26,15 +26,14 @@ jobs:
 
       - name: substitute variables
         run: |
-          echo "$(date +'%Y')" >> $YEAR
+          year="$(date +'%Y')"
+          echo "YEAR=$year" >> $GITHUB_ENV
 
       - name: substitute user inputs in the workflow files
         uses: microsoft/variable-substitution@v1 
         with:
-          files: '.github/workflows/deploy-*.yaml, .github/workflows/build.yaml, .github/stacks/license-*.md'
+          files: '.github/workflows/deploy.yaml, .github/workflows/build.yaml'
         env:
-          ___YEAR___: '${{ env.YEAR }}'
-          ___USER_NAME___: '${{ github.repository_owner }}'
           ___NODE_VERSION___: '${{ github.event.inputs.NODE_VERSION }}'
 
       - name: stacks framework code generation
@@ -45,23 +44,23 @@ jobs:
 
       - name: add BSD License
         if: ${{ github.event.inputs.LICENSE == 'BSD License' }}
-        run: cp ./.github/stacks/license-bsd.md LICENSE.md
+        run: cp ./.github/licenses/license-bsd.md LICENSE.md
 
       - name: add MIT License
         if: ${{ github.event.inputs.LICENSE == 'MIT License' }}
-        run: cp ./.github/stacks/license-mit.md LICENSE.md
+        run: cp ./.github/licenses/license-mit.md LICENSE.md
 
       - name: add Apache License 2.0
         if: ${{ github.event.inputs.LICENSE == 'Apache License 2.0' }}
-        run: cp ./.github/stacks/license-apl.md LICENSE.md
+        run: cp ./.github/licenses/license-apl.md LICENSE.md
 
       - name: add Mozilla Public License 2.0
         if: ${{ github.event.inputs.LICENSE == 'Mozilla Public License 2.0' }}
-        run: cp ./.github/stacks/license-mpl.md LICENSE.md
+        run: cp ./.github/licenses/license-mpl.md LICENSE.md
 
       - name: add Creative Commons License
         if: ${{ github.event.inputs.LICENSE == 'Creative Commons Zero v1.0 Universal' }}
-        run: cp ./.github/stacks/license-ccl.md LICENSE.md
+        run: cp ./.github/licenses/license-ccl.md LICENSE.md
 
       - name: stacks framework commit to repository
         uses: actions/github-script@v4
