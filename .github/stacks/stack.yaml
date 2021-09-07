@@ -1,4 +1,4 @@
-version: 1.0                                           # stack schema version 1.0 (latest)
+version: 0.1.0                                            # stack schema version 0.1.0 (latest)
 
 
 name: ghstack-nextjs                                   # stack name 
@@ -41,18 +41,27 @@ inputs:                                                # stack inputs
 
 
 configs:                                               # stack config applied to new repository
-  repo-metadata:
-    topics:                                            # repository tags for new repository
-    - nextjs
-    - github-pages
+  - repo-metadata:
+     parameters:
+       description: 'NextJS + GitHub pages'
+       topics:                                            # repository tags for new repository
+       - nextjs
+       - github-pages
 
-  branches:                                            # branching configs for new repository
-  - name: main
-    parameters:
-      dismiss-stale-reviews: true                      # default: false
+  - branches:                                            # branching configs for new repository
+    - name: main
+      parameters:
+        dismiss-stale-reviews: true                      # default: false
+        required-approving-review-count: 1
+        require-code-owner-reviews: true
 
-  environments:                                        # environment configs for new repository
-  - name: production
+  - environments:                                        # environment configs for new repository
+    - name: production
+      parameters:
+        protected-branches: true
+        
+github-apps:                                           # github apps configured on new repository
+- name: Azure
 
 init:
-  uses: ".github/workflows/stack-init.yaml"
+- uses: ".github/workflows/stack-init.yaml"
