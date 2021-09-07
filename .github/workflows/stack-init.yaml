@@ -32,9 +32,9 @@ jobs:
       - name: substitute user inputs in the workflow files
         uses: microsoft/variable-substitution@v1 
         with:
-          files: '.github/workflows/build.yaml'
+          files: '.github/workflows/build.yaml, .github/workflows/deploy.yaml'
         env:
-          ___NODE_VERSION___: '${{ github.event.inputs.NODE_VERSION }}'
+          env.NODE_VERSION: '${{ github.event.inputs.NODE_VERSION }}'
 
       - name: stacks framework code generation
         run: |
