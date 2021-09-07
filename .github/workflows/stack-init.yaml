@@ -3,10 +3,6 @@ name: "provision stack build/ deploy for ghpages"
 on:
   workflow_dispatch:
     inputs:
-      LICENSE:
-        required: true
-        description: 'license to be used'
-
       NODE_VERSION:
         required: true
         description: 'nodejs version to be used'
@@ -17,18 +13,15 @@ jobs:
     steps:
       - name: checkout
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false
 
       - name: use node.js ${{ github.event.inputs.NODE_VERSION }} 
         uses: actions/setup-node@v1
         with:
           node-version: ${{ github.event.inputs.NODE_VERSION }}
           registry-url: https://registry.npmjs.org/
-
-      - name: substitute variables
-        run: |
-          year="$(date +'%Y')"
-          echo "YEAR=$year" >> $GITHUB_ENV
-
+          
       - name: substitute user inputs in the workflow files
         uses: microsoft/variable-substitution@v1 
         with:
@@ -41,18 +34,16 @@ jobs:
           npx create-next-app nextjs-scaffold --use-npm --example "https://github.com/vercel/next-learn-starter/tree/master/learn-starter"
           cp -r nextjs-scaffold/* .
           rm -rf nextjs-scaffold
-
-#       - name: stacks framework commit to repository
-#         uses: actions/github-script@v4
-#         with:
-#           script: |
-#             //todo: fixme the commit function/ script.
-
-#             octokit.rest.git.createCommit({
-#               owner,
-#               repo,
-#               message,
-#               tree,
-#               author.name,
-#               author.email
-#             })
+          
+      - name: Configure git
+        run: |
+          git config --global user.email "${{ github.actor }}@users.noreply.github.com"
+          git config --global user.name "${{ github.actor }}"
+          git remote set-url origin https://${{ github.actor }}:${{ secrets.AJ_PAT }}@github.com/${{ github.repository }}.git
+          
+      - name: Commit generated code and initialize workflows
+        run: |
+          git add .
+          git commit -m "Generate framework code and initialize workflows"
+          git push origin -u main
+          
