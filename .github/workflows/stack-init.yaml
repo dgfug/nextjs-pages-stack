@@ -32,7 +32,7 @@ jobs:
       - name: substitute user inputs in the workflow files
         uses: microsoft/variable-substitution@v1 
         with:
-          files: '.github/workflows/deploy.yaml, .github/workflows/build.yaml'
+          files: '.github/workflows/build.yaml'
         env:
           ___NODE_VERSION___: '${{ github.event.inputs.NODE_VERSION }}'
 
@@ -42,37 +42,17 @@ jobs:
           cp -r nextjs-scaffold/* .
           rm -rf nextjs-scaffold
 
-      - name: add BSD License
-        if: ${{ github.event.inputs.LICENSE == 'BSD License' }}
-        run: cp ./.github/licenses/license-bsd.md LICENSE.md
+#       - name: stacks framework commit to repository
+#         uses: actions/github-script@v4
+#         with:
+#           script: |
+#             //todo: fixme the commit function/ script.
 
-      - name: add MIT License
-        if: ${{ github.event.inputs.LICENSE == 'MIT License' }}
-        run: cp ./.github/licenses/license-mit.md LICENSE.md
-
-      - name: add Apache License 2.0
-        if: ${{ github.event.inputs.LICENSE == 'Apache License 2.0' }}
-        run: cp ./.github/licenses/license-apl.md LICENSE.md
-
-      - name: add Mozilla Public License 2.0
-        if: ${{ github.event.inputs.LICENSE == 'Mozilla Public License 2.0' }}
-        run: cp ./.github/licenses/license-mpl.md LICENSE.md
-
-      - name: add Creative Commons License
-        if: ${{ github.event.inputs.LICENSE == 'Creative Commons Zero v1.0 Universal' }}
-        run: cp ./.github/licenses/license-ccl.md LICENSE.md
-
-      - name: stacks framework commit to repository
-        uses: actions/github-script@v4
-        with:
-          script: |
-            //todo: fixme the commit function/ script.
-
-            octokit.rest.git.createCommit({
-              owner,
-              repo,
-              message,
-              tree,
-              author.name,
-              author.email
-            })
+#             octokit.rest.git.createCommit({
+#               owner,
+#               repo,
+#               message,
+#               tree,
+#               author.name,
+#               author.email
+#             })
