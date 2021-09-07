@@ -1,14 +1,11 @@
 version: 0.1.0                                            # stack schema version 0.1.0 (latest)
 
-
 name: ghstack-nextjs                                   # stack name 
 description: ghstack for a nextjs app on ghpages       # stack description
-
 
 branding:                                              # stack branding 
  icon: 'github-pages.svg'
  color: 'black'
-
 
 inputs:                                                # stack inputs 
   - name: NODE_VERSION                                 # stack input name
@@ -17,28 +14,6 @@ inputs:                                                # stack inputs
     validvalues:                                       # stack input valid values that can be selected
     - v12.22.4
     - v14.17.4
-
-  - name: NEXTJS_VERSION
-    default: v11.0.1
-    description: NEXTJS_VERSION for nextjs stack
-    validvalues:
-    - v11.0.1
-    - v10.2.4
-    - v10.2.3
-    - v10.2.2
-    - v10.2.1
-
-  - name: LICENSE
-    default: None
-    description: choose a licence to be applied to new stack, learn more [here](https://docs.github.com/articles/licensing-a-repository/#disclaimer).
-    validvalues:
-    - None
-    - BSD License
-    - MIT License
-    - Apache License 2.0
-    - Mozilla Public License 2.0
-    - Creative Commons Zero v1.0 Universal
-
 
 configs:                                               # stack config applied to new repository
   - repo-metadata:
