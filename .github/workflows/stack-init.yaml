@@ -25,8 +25,8 @@ jobs:
           registry-url: https://registry.npmjs.org/
 
       - name: substitute variables
-      - run: |
-        echo "$(date +'%Y')" >> $YEAR
+        run: |
+          echo "$(date +'%Y')" >> $YEAR
 
       - name: substitute user inputs in the workflow files
         uses: microsoft/variable-substitution@v1 
@@ -38,28 +38,29 @@ jobs:
           ___NODE_VERSION___: '${{ github.event.inputs.NODE_VERSION }}'
 
       - name: stacks framework code generation
-        run: npx create-next-app nextjs-scaffold --use-npm --example "https://github.com/vercel/next-learn-starter/tree/master/learn-starter
-        run: cp -r nextjs-scaffold/* .
-        run: rm -rf nextjs-scaffold
+        run: |
+          npx create-next-app nextjs-scaffold --use-npm --example "https://github.com/vercel/next-learn-starter/tree/master/learn-starter"
+          cp -r nextjs-scaffold/* .
+          rm -rf nextjs-scaffold
 
       - name: add BSD License
-        if: ${{ LICENSE == 'BSD License' }}
+        if: ${{ github.event.inputs.LICENSE == 'BSD License' }}
         run: cp ./.github/stacks/license-bsd.md LICENSE.md
 
       - name: add MIT License
-        if: ${{ LICENSE == 'MIT License' }}
+        if: ${{ github.event.inputs.LICENSE == 'MIT License' }}
         run: cp ./.github/stacks/license-mit.md LICENSE.md
 
       - name: add Apache License 2.0
-        if: ${{ LICENSE == 'Apache License 2.0' }}
+        if: ${{ github.event.inputs.LICENSE == 'Apache License 2.0' }}
         run: cp ./.github/stacks/license-apl.md LICENSE.md
 
       - name: add Mozilla Public License 2.0
-        if: ${{ LICENSE == 'Mozilla Public License 2.0' }}
+        if: ${{ github.event.inputs.LICENSE == 'Mozilla Public License 2.0' }}
         run: cp ./.github/stacks/license-mpl.md LICENSE.md
 
       - name: add Creative Commons License
-        if: ${{ LICENSE == 'Creative Commons Zero v1.0 Universal' }}
+        if: ${{ github.event.inputs.LICENSE == 'Creative Commons Zero v1.0 Universal' }}
         run: cp ./.github/stacks/license-ccl.md LICENSE.md
 
       - name: stacks framework commit to repository
