@@ -15,9 +15,9 @@ inputs:                                                # stack inputs
     - v12.22.4
     - v14.17.4
     
-  - name: GITHUB_PAT
+  - name: GH_PAT
     description: GitHub PAT with repo and workflow permissions
-    is_secret: true
+    required: true
 
 configs:                                               # stack config applied to new repository
   - repo-metadata:
