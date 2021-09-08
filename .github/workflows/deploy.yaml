@@ -34,7 +34,26 @@ jobs:
           BRANCH: gh-pages
           FOLDER: build
           CLEAN: true
-          
+     
+      - name: Enable GitHub Pages
+        uses: actions/github-script@v4
+        with:
+          script: |
+            const octokit = new Octokit({ auth: "${{ github.token }}" });
+            await octokit.request('POST /repos/{owner}/{repo}/pages', {
+              owner: '${{ github.repository_owner }}',
+              repo: '${{ github.event.repository.name }}',
+              source: {
+                branch: 'gh-pages',
+                path: '/'
+              },
+              mediaType: {
+                previews: [
+                  'switcheroo'
+                ]
+              }
+            })
+            
       - name: Website URL
         run: echo "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
         
