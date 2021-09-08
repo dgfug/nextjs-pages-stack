@@ -47,7 +47,18 @@ jobs:
                 path: '/'
               }
             })
-            
-      - name: Website URL
-        run: echo "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
-        
+         
+      - name: Wait for website to come online
+        timeout-minutes: 5 
+        run: |
+          echo "Waiting for website to come alive..."
+          URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          STATUS_CODE=$(curl -o /dev/null -s -w "%{http_code}\n" $URL)
+          while [ $STATUS_CODE -ne 200 ]
+          do
+            echo "STATUSCODE: $STATUS_CODE"
+            STATUS_CODE=$(curl -o /dev/null -s -w "%{http_code}\n" $URL)
+          done
+          echo "STATUSCODE: $STATUS_CODE"
+          echo "Website is up and running..."
+          echo $URL       
