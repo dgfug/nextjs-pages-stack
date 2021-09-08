@@ -25,7 +25,7 @@ jobs:
         run: |
           npm install -g
           npm run build 
-          next export -o build
+          npm run env -- next export -o build
 
       - name: deploy
         uses: JamesIves/github-pages-deploy-action@releases/v3
