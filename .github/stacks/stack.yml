@@ -44,7 +44,7 @@ configs:                                               # stack config applied to
         protected-branches: true
         
 github-apps:                                           # github apps configured on new repository
-- name: Azure
+- slug: Azure
 
 init:
 - uses: ".github/workflows/stack-init.yaml"
