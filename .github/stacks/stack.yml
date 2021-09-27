@@ -4,7 +4,7 @@ name: ghstack-nextjs                                   # stack name
 description: ghstack for a nextjs app on ghpages       # stack description
 
 branding:                                              # stack branding 
- icon: 'node'
+ icon: 'package'
  color: 'black'
 
 inputs:                                                # stack inputs 
