@@ -1,7 +1,7 @@
 version: 0.1.0                                            # stack schema version 0.1.0 (latest)
 
-name: ghstack-nextjs                                   # stack name 
-description: ghstack for a nextjs app on ghpages       # stack description
+name: A stack to deploy Next.js site to GitHub pages              # stack name 
+description: A stack to deploy Next.js site to GitHub pages       # stack description
 
 branding:                                              # stack branding 
  icon: 'package'
