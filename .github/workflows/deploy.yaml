@@ -37,6 +37,7 @@ jobs:
      
       - name: Enable GitHub Pages
         uses: actions/github-script@v4
+        continue-on-error: true # API fails when the GitHub pages is already deployed
         with:
           github-token: ${{ secrets.GH_PAT }}
           script: |
@@ -48,14 +49,17 @@ jobs:
                 path: '/'
               }
             })
-            
-            echo "Website URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
-         
+        
+      - name: Website URL
+        run: |
+          echo "Website URL: https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          
       - name: Wait for website to come online
         timeout-minutes: 5 
         run: |
           echo "Waiting for the website to come alive..."
           URL="https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+          sleep 20
           STATUS_CODE=$(curl -o /dev/null -s -w "%{http_code}\n" $URL)
           echo "STATUSCODE: $STATUS_CODE"
           while [ $STATUS_CODE -ne 200 ]
