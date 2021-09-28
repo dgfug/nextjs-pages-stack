@@ -31,7 +31,7 @@ jobs:
 
       - name: stacks framework code generation
         run: |
-          npx create-next-app nextjs-scaffold --use-npm --example "https://github.com/vercel/next-learn-starter/tree/master/learn-starter"
+          npx create-next-app nextjs-scaffold --use-npm --example "https://github.com/vercel/next-learn-starter/tree/master/basics/learn-starter"
           cp -r nextjs-scaffold/* .
           rm -rf nextjs-scaffold
           
