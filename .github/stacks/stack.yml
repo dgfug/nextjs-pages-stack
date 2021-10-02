@@ -9,17 +9,24 @@ branding:                                              # stack branding
 
 inputs:                                                # stack inputs 
     
+  - name: NODE_VERSION                                 # stack input name
+    default: v12.22.4                              # stack input default value provided
+    description: NODE_VERSION for nodejs stack         # stack input description
+    validvalues:                                       # stack input valid values that can be selected
+    - v12.22.4
+    - v14.17.4
+    
   - name: GITHUB_PAT
     description: GitHub PAT with repo and workflow permissions
-    required: true
     is_secret: true
+    required: true
 
 configs:                                               # stack config applied to new repository
   - repo-metadata:
      parameters:
        description: 'NextJS + GitHub pages'
        secrets: 
-         - name: GITHUB_PAT
+         - name: GH_PAT
            value: ${{inputs.GITHUB_PAT}}
        topics:                                            # repository tags for new repository
        - nextjs
