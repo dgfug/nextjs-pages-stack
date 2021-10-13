@@ -18,13 +18,13 @@ inputs:                                                # stack inputs
     
   - name: GITHUB_PAT
     description: GitHub PAT with repo and workflow permissions
-    is_secret: true
+    is-secret: true
     required: true
 
 configs:                                               # stack config applied to new repository
-  - repo-metadata:
+  repo-metadata:
      parameters:
-       description: 'NextJS + GitHub pages'
+       description: 'Setup your Nextjs site in Github Pages'
        secrets: 
          - name: GH_PAT
            value: ${{inputs.GITHUB_PAT}}
@@ -32,20 +32,20 @@ configs:                                               # stack config applied to
        - nextjs
        - github-pages
 
-  - branches:                                            # branching configs for new repository
+  branches:                                            # branching configs for new repository
     - name: main
       parameters:
         dismiss-stale-reviews: true                      # default: false
         required-approving-review-count: 1
         require-code-owner-reviews: true
 
-  - environments:                                        # environment configs for new repository
-    - name: production
-      parameters:
-        protected-branches: true
-        
-github-apps:                                           # github apps configured on new repository
-- slug: Azure
+  environments:                                        
+    - name: development
+      parameters: 
+        protected-branches: false
+        custom-branch-policies:
+          - main
+          - releases/*
 
 init:
-- uses: ".github/workflows/stack-init.yaml"
+ uses: ".github/workflows/stack-init.yaml"
